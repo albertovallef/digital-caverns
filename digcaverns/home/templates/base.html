@@ -1,36 +1,13 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Digital Caverns</title>
-    <style>
-        body {
-            background-image: url('../static/cavern.png'); /* Replace with your cavern background image */
-            background-size: cover;
-            font-family: 'Times New Roman', serif;
-            color: #f4e4d7; /* Light brown text color */
-        }
-        .header {
-            text-align: center;
-            padding: 50px;
-        }
-        .header h1 {
-            font-size: 3em;
-            color: #d3b897; /* Slightly darker brown for contrast */
-            text-shadow: 2px 2px 4px #000; /* Gives depth to the title */
-        }
-        /* Additional styles for content, navigation, etc., can go here */
-    </style>
+  <link rel="stylesheet" href="{% static "home/base.css" %}">
+  <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-    <div class="header">
-        <h1>Digital Caverns</h1>
-    </div>
-
-    <div>
-        <h2>Articles</h1>
-    </div>
-    <!-- Content goes here -->
-
+  {% block content %}
+  {% endblock content %}
 </body>
 </html>
 
