@@ -4,7 +4,7 @@
     "src": "build_files.sh",
     "use": "@vercel/static-build",
     "config": {
-     "destDir": "staticfiles_build"
+     "destDir": "staticfiles_build/static"
     }
   },
     {
@@ -12,6 +12,7 @@
     "use": "@vercel/python",
     "config": { "maxLambdaSize": "15mb"}
   }],
+  "outputDirectory": "staticfiles_build/static",
   "routes": [
     {
       "src": "/static/(.*)",
