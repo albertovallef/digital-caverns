@@ -1,0 +1,72 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <!--Bootstrap imports -->
+  <link rel="stylesheet" href="{% static 'bootstrap-5.3.3-dist/css/bootstrap.min.css' %}">
+  <!--Used for the foorter emojiers -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <!--Add custom links here -->
+  {% block link %}{% endblock %}
+
+  <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+  <!-- Navbar with main page sections -->
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+          <img src="{% static 'mysite/img/digitalcaverns_logo.png' %}" width="70" height="70" alt=""></img>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'resume' %}">Resume</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-disabled="true" href="{% url 'blog' %}">Blog</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Actual page content here -->
+  {% block content %}
+  {% endblock content %}
+  <!-- Footer with contact info -->
+  <footer class="bg-light text-center txt-lg-start mt-5">
+    <div class="container">
+      <a href="https://www.linkedin.com/in/albertovallef/" class="me-4 text-reset">
+        <i class="fab fa-linkedin fa-2x"></i>
+        <span class="ms-2">Connect with me!</span>
+      </a>
+      <a href="https://github.com/albertovallef" class="me-4 text-reset">
+        <i class="fab fa-github fa-2x"></i>
+        <span class="ms-2">Collaborate with me!</span>
+      </a>
+      <a href="alberto:albevallefo@gmail.com" class="text-reset">
+        <i class="fas fa-envelope fa-2x"></i>
+        <span class="ms-2">Contact me!</span>
+      </a>
+    </div>
+    <!-- Copyright -->
+    <div class="text-center" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2024 DigitalCaverns:
+      <a class="text-dark" href="https://digitalcaverns.com/">digitalcaverns.com</a>
+    </div>
+  </footer>
+  <!--JavaScript at end of body for optimized loading -->
+  <script src="{% static 'bootstrap-5.3.3-dist/js/bootstrap.min.js' %}"></script>
+  
+</body>
+
+</html>
+

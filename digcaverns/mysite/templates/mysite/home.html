@@ -1,0 +1,37 @@
+{% extends "mysite/base.html" %}
+{% load static %}
+{% block link %}
+<link rel="stylesheet" href="{% static "mysite/css/home.css" %}">
+{% endblock %}
+
+{% block title %}Home{% endblock title%}
+
+{% block content %}
+<div class="container my-5"> 
+  <h1>
+    Welcome to 
+    <big class="text-body-secondary">DigitalCaverns</big>
+    a place to dig deep into technology and share knowldege!
+  </h1>
+</div>
+
+<div class="container my-5">
+  <div class="row align-items-center">
+    <!-- Image Column -->
+    <div class="col-md-6">
+      <img src="{% static "mysite/img/alberto_smaller.png" %}" class="img-fluid rounded-circle" alt="Alberto Valle">
+    </div>
+
+    <!-- Text Column -->
+    <div class="col-md-6">
+      <h2>
+        Hello there 👋 My name is <big class="text-body-secondary">Alberto Valle</big>, I am the author.
+      </h2>
+      <h6>
+        I studied <big class="text-body-secondary"> Computer Science </big> at UC Merced and I do <big class="text-body-secondary">software engineering</big> for a living. My programming language of choice is <big class="text-body-secondary">python</big>. I am experienced in <big class="text-body-secondary">networking/IoT</big> developing <big class="text-body-secondary">robotics</big> applications. During my free time I enjoy reading and learning new technologies. My goal with this page is to <big class="text-body-secondary">share knowldege</big> from <big class="text-body-secondary">experience</big>.
+      </h6>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
