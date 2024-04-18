@@ -3,5 +3,9 @@
 {% block title %}Resume{% endblock title%}
 
 {% block content %}
-This where my resume goes
+<div class="container mt-5">
+  <div class="d-flex justify-content-center">
+    <iframe src="{% url 'display_resume' %}" width="700" height="500" allow="autoplay"></iframe>
+  </div>
+</div>
 {% endblock content %}
