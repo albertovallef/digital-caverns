@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['.vercel.app', '.now.sh', '127.0.0.1', 'localhost', 'www.digita
 # Application definition
 
 INSTALLED_APPS = [
+    'blog',
     'mysite',
     'django.contrib.admin',
     'django.contrib.auth',
