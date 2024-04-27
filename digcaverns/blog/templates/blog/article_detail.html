@@ -1,0 +1,13 @@
+{% extends "blog/blog_base.html" %}
+
+{% block content %}
+<div class="container py-5">
+    <h1 class="mb-4">{{ article_detail.title }}</h1>
+    <p>Published on: {{ article_detail.publish_date }}</p>
+    <p>Last updated: {{ article_detail.update_date }}</p>
+    <p>Views: {{ article_detail.views}}</p>
+    <div class="row">
+      <div>{{ article_detail.html_content | safe}}</div>
+    </div>
+</div>
+{% endblock content %}
