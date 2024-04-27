@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.utils import timezone
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
@@ -8,11 +7,14 @@ from blog.models import Article
 
 # Create your views here.
 class ArticleDetailView(DetailView):
+    """Rendering individual `Article` models"""
+
     model = Article
     template_name = 'blog/article_detail.html'
     context_object_name = 'article_detail'
 
     def get_context_data(self, **kwargs):
+        """Process article content before rendering page"""
         context = super().get_context_data(**kwargs)
         article = context["article_detail"]
         if article.content:
@@ -28,6 +30,8 @@ class ArticleDetailView(DetailView):
 
 
 class ArticleListView(ListView):
+    """Rendering list of `Article` models"""
+
     model = Article
     template_name = 'blog/index.html'
     context_object_name = 'articles_list'
@@ -37,5 +41,4 @@ class ArticleListView(ListView):
         context = super().get_context_data(**kwargs)
         context["now"] = timezone.now()
         return context
-        #return super().get_context_data(**kwargs)
      
