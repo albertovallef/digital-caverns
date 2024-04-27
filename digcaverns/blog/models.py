@@ -13,6 +13,8 @@ class User(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
 
+    def __str__(self) -> str:
+        return f"{self.first_name} {self.last_name}"
 
 class ArticleManger(models.Manager):
     def published(self):
@@ -25,6 +27,7 @@ class Article(models.Model):
     """
     title = models.CharField(max_length=100)
     content = models.TextField()  # Store markdown text
+    about = models.TextField(max_length=280, default="")  # Forces about to be concise! 
     image = models.ImageField(upload_to='articles_imgs/', 
                               null=True, blank=True)
     author = models.ForeignKey(to=User, 
