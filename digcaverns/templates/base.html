@@ -13,7 +13,7 @@
 
   <title>{% block title %}{% endblock %}</title>
 </head>
-<body>
+<body  class="d-flex flex-column min-vh-100">
   <!-- Navbar with main page sections -->
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container">
@@ -42,7 +42,7 @@
   {% block content %}
   {% endblock content %}
   <!-- Footer with contact info -->
-  <footer class="bg-light text-center txt-lg-start mt-5">
+  <footer class="bg-light text-center txt-lg-start mt-auto">
     <div class="container">
       <a href="https://www.linkedin.com/in/albertovallef/" class="me-4 text-reset">
         <i class="fab fa-linkedin fa-2x"></i>
