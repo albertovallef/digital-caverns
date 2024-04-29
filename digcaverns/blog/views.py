@@ -18,7 +18,15 @@ class ArticleDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         article = context["article_detail"]
         if article.content:
-            article.html_content = markdown(article.content)
+            article.html_content = markdown(article.content, 
+                                            extensions=['fenced_code', 
+                                                        'codehilite'],
+                                            extension_configs={
+                                            'codehilite': {
+                                            'css_class': 'codehilite',
+                                            'linenums': True
+                                            }
+                                            })
         return context
         
 
