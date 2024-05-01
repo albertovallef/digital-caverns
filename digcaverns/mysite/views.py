@@ -30,7 +30,3 @@ def display_resume(request):
     else:
         return HttpResponse("File not found.", status=404)
 
-def blog(request):
-    """Renders the blog main page"""
-    # NOTE: This will be moved to a different project
-    return render(request, 'mysite/blog.html')

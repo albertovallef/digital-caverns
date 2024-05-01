@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['.vercel.app', '.now.sh', '127.0.0.1', 'localhost', 'www.digita
 # Application definition
 
 INSTALLED_APPS = [
+    'blog',
     'mysite',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -76,17 +77,17 @@ WSGI_APPLICATION = 'digcaverns.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    #'default': {
-    #    "ENGINE": "django.db.backends.postgresql",
-    #    "NAME": os.environ.get("POSTGRES_DATABASE"),
-    #    "USER": os.environ.get('POSTGRES_USER'),
-    #    "PASSWORD": os.environ.get('POSTGRES_PASSWORD'),
-    #    "HOST": os.environ.get("POSTGRES_HOST"),
-    #    "URL": os.environ.get("POSTGRES_URL"),
-    #    "PORT": "5432"
-    #    # 'ENGINE': 'django.db.backends.sqlite3',
-    #    # 'NAME': BASE_DIR / 'db.sqlite3',
-    #}
+    'default': {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.environ.get("POSTGRES_DATABASE"),
+        "USER": os.environ.get('POSTGRES_USER'),
+        "PASSWORD": os.environ.get('POSTGRES_PASSWORD'),
+        "HOST": os.environ.get("POSTGRES_HOST"),
+        "URL": os.environ.get("POSTGRES_URL"),
+        "PORT": "5432"
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
 
 
@@ -114,7 +115,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+# Changing to Alberto's current timezone
+TIME_ZONE = 'America/Los_Angeles'
 
 USE_I18N = True
 
