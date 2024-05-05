@@ -1,9 +1,9 @@
+import os
+
 from django.conf import settings
-from django.core.files.storage import FileSystemStorage
-from django.http import FileResponse, HttpResponse
+from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.decorators.clickjacking import xframe_options_exempt
-import os
 
 
 def home(request):
