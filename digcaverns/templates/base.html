@@ -42,6 +42,44 @@
   <!-- Actual page content here -->
   {% block content %}
   {% endblock content %}
+  <!--Hidden elements -->
+  <div class="modal fade" id="contactMeModal" tabindex="-1" aria-labelledby="contactMeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="contactMeModalLabel">Contact Me</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="inputEmail" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp">
+              <div id="emailHelp" class="form-text">I'll never share your email with anyone else.</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="inputFirstName" class="form-label">First Name</label>
+              <input type="text" class="form-control" id="inputFirstName">
+            </div>
+
+            <div class="mb-3">
+              <label for="inputLastName" class="form-label">Last Name</label>
+              <input type="text" class="form-control" id="inputLastName">
+            </div>
+
+            <div class="mb-3">
+              <label for="inputContent" class="form-label">How can I help you?</label>
+              <textarea class="form-control" id="inputContent" rows="5"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary">Send message</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- Footer with contact info -->
   <footer class="bg-light text-center txt-lg-start mt-auto">
     <div class="container">
@@ -53,7 +91,8 @@
         <i class="fab fa-github fa-2x"></i>
         <span class="ms-2">Collaborate with me!</span>
       </a>
-      <a href="mailto:albevallefo@gmail.com" class="text-reset" target="_blank" rel="noopener">
+      <!-- Uses hidden modal -->
+      <a class="me-4 text-reset" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#contactMeModal">
         <i class="fas fa-envelope fa-2x"></i>
         <span class="ms-2">Contact me!</span>
       </a>
