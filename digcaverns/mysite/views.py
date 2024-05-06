@@ -2,7 +2,7 @@ import os
 
 from django.conf import settings
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.decorators.clickjacking import xframe_options_exempt
 
 
@@ -13,6 +13,14 @@ def home(request):
 def resume(request):
     """Renders the resume page"""
     return render(request, 'mysite/resume.html')
+
+def contact_me(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        first_name = request.POST.get('fist')
+        last_name = request.POST.get('last')
+        content = request.POST.get('content')
+        return redirect(home)
 
 @xframe_options_exempt
 def display_resume(request):
