@@ -39,10 +39,29 @@
         </div>
       </div>
     </nav>
+  <!--Hidden success or error banner -->
+  {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        {% if message.tags == 'error' %}
+          <div class="alert alert-danger alert-dismissible" role="alert">
+            <div>{{message}}</div>
+           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endif %} 
+        {% if message.tags == 'success' %}
+          <div class="alert alert-success alert-dismissible" role="alert">
+            <div>{{message}}</div>
+           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endif %} 
+      {% endfor %}
+    </ul>
+  {% endif %} 
   <!-- Actual page content here -->
   {% block content %}
   {% endblock content %}
-  <!--Hidden elements -->
+  <!--Hidden contact me -->
   <div class="modal fade" id="contactMeModal" tabindex="-1" aria-labelledby="contactMeModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -55,18 +74,18 @@
             {% csrf_token %}
             <div class="mb-3">
               <label for="inputEmail" class="form-label">Email address</label>
-              <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" name="email">
+              <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" name="email" required>
               <div id="emailHelp" class="form-text">I'll never share your email with anyone else.</div>
             </div>
 
             <div class="mb-3">
               <label for="inputFirstName" class="form-label">First Name</label>
-              <input type="text" class="form-control" id="inputFirstName" name="first">
+              <input type="text" class="form-control" id="inputFirstName" name="first_name">
             </div>
 
             <div class="mb-3">
               <label for="inputLastName" class="form-label">Last Name</label>
-              <input type="text" class="form-control" id="inputLastName" name="last">
+              <input type="text" class="form-control" id="inputLastName" name="last_name">
             </div>
 
             <div class="mb-3">
