@@ -10,8 +10,12 @@ class User(models.Model):
     Notes: 
         - Currently there will be only one user (the author)
     """
-    first_name = models.CharField(max_length=30)
-    last_name = models.CharField(max_length=30)
+    email = models.EmailField(unique=False, blank=False, 
+                              null=False)
+    first_name = models.CharField(max_length=30, blank=False, 
+                                  null=False)
+    last_name = models.CharField(max_length=30, blank=False, 
+                                 null=False)
 
     def __str__(self) -> str:
         return f"{self.first_name} {self.last_name}"
@@ -25,16 +29,21 @@ class Article(models.Model):
     """
     Model to create articles
     """
-    title = models.CharField(max_length=100)
-    content = models.TextField()  # Store markdown text
-    about = models.TextField(max_length=280, default="")  # Forces about to be concise! 
+    title = models.CharField(max_length=100, blank=False,
+                             null=False)
+    content = models.TextField(default="", blank=True, 
+                               null=False)  # Store markdown text
+    about = models.TextField(max_length=280, default="", 
+                             blank=True, null=False)  # Forces about to be concise! 
     image = models.ImageField(upload_to='articles_imgs/', 
                               null=True, blank=True)
-    author = models.ForeignKey(to=User, 
-                               on_delete=models.CASCADE, 
-                               related_name='articles')
+    author = models.ForeignKey(to=User,
+                               on_delete=models.SET_DEFAULT, 
+                               related_name='article',
+                               default="Anonymous")
     publish_date = models.DateField()
-    update_date = models.DateField()
+    update_date = models.DateField(auto_now=True,  # Auto change date on save
+                                   editable=False)
 
     class Status(models.TextChoices):
         DRAFT = "DFT", _("Draft"),
