@@ -1,4 +1,5 @@
 {% load static %}
+{% load nav_tags %}
 
 <!DOCTYPE html>
 <html>
@@ -15,9 +16,9 @@
 </head>
 <body  class="d-flex flex-column min-vh-100">
   <!-- Navbar with main page sections -->
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
       <div class="container">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="{% url 'home' %}">
             <img src="{% static 'img/digitalcaverns_logo.png' %}" width="70" height="70" alt=""></img>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,33 +27,92 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+              <a class="nav-link {% is_active 'home' %}" href="{% url 'home' %}">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'resume' %}">Resume</a>
+              <a class="nav-link {% is_active 'resume' %}" href="{% url 'resume' %}">Resume</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" aria-disabled="true" href="{% url 'blog' %}">Blog</a>
+              <a class="nav-link {% is_active 'blog' %}" href="{% url 'blog' %}">Blog</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
+  <!--Hidden success or error banner -->
+  {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        {% if message.tags == 'error' %}
+          <div class="alert alert-danger alert-dismissible" role="alert">
+            <div>{{message}}</div>
+           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endif %} 
+        {% if message.tags == 'success' %}
+          <div class="alert alert-success alert-dismissible" role="alert">
+            <div>{{message}}</div>
+           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endif %} 
+      {% endfor %}
+    </ul>
+  {% endif %} 
   <!-- Actual page content here -->
   {% block content %}
   {% endblock content %}
+  <!--Hidden contact me -->
+  <div class="modal fade" id="contactMeModal" tabindex="-1" aria-labelledby="contactMeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="contactMeModalLabel">Contact Me</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="contactMeForm" method="post" action={% url 'contact_me' %}>
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="inputEmail" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" name="email" required>
+              <div id="emailHelp" class="form-text">I'll never share your email with anyone else.</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="inputFirstName" class="form-label">First Name</label>
+              <input type="text" class="form-control" id="inputFirstName" name="first_name">
+            </div>
+
+            <div class="mb-3">
+              <label for="inputLastName" class="form-label">Last Name</label>
+              <input type="text" class="form-control" id="inputLastName" name="last_name">
+            </div>
+
+            <div class="mb-3">
+              <label for="inputContent" class="form-label">How can I help you?</label>
+              <textarea class="form-control" id="inputContent" rows="5" name="content"></textarea>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">Send message</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- Footer with contact info -->
   <footer class="bg-light text-center txt-lg-start mt-auto">
     <div class="container">
-      <a href="https://www.linkedin.com/in/albertovallef/" class="me-4 text-reset">
+      <a href="https://www.linkedin.com/in/albertovallef/" class="me-4 text-reset" target="_blank" rel="noopener">
         <i class="fab fa-linkedin fa-2x"></i>
         <span class="ms-2">Connect with me!</span>
       </a>
-      <a href="https://github.com/albertovallef" class="me-4 text-reset">
+      <a href="https://github.com/albertovallef" class="me-4 text-reset" target="_blank" rel="noopener">
         <i class="fab fa-github fa-2x"></i>
         <span class="ms-2">Collaborate with me!</span>
       </a>
-      <a href="mailto:albevallefo@gmail.com" class="text-reset">
+      <!-- Uses hidden modal -->
+      <a class="me-4 text-reset" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#contactMeModal">
         <i class="fas fa-envelope fa-2x"></i>
         <span class="ms-2">Contact me!</span>
       </a>
@@ -65,7 +125,7 @@
   </footer>
   <!--JavaScript at end of body for optimized loading -->
   <script src="{% static 'bootstrap-5.3.3-dist/js/bootstrap.min.js' %}"></script>
-  
+  <script src="{% static 'js/base.js' %}"></script>
 </body>
 
 </html>

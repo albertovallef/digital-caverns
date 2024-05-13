@@ -26,7 +26,7 @@ class ArticleDetailView(DetailView):
 
         if self.request.user.is_staff:  # Show everything to admin
             return obj  # Don't count admin views
-        elif((obj.status=='RDY' and obj.publish_date() <= today) or obj.status=='PUB'):
+        elif((obj.status=='RDY' and obj.publish_date <= today) or obj.status=='PUB'):
             obj.increment_views()
             return obj
         else:
