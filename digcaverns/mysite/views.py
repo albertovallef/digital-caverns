@@ -28,7 +28,9 @@ def contact_me(request):
             email: str = form.cleaned_data['email'] 
             content: str = form.cleaned_data['content']
             try:
-                contact, created = Contact.objects.get_or_create(email=email)
+                contact, created = Contact.objects.get_or_create(email=email, 
+                                                                 defaults={'first_name': first_name,
+                                                                           'last_name': last_name})
                 if not created:
                     if contact.first_name != first_name:
                         contact.first_name = first_name
