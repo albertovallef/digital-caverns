@@ -19,6 +19,9 @@ RUN python create_admin.py
 # Copy project
 COPY . /code/
 
+# Collect static files
+RUN python manage.py collectstatic --noinput  # Collect static files
+
 # Run the application
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["python", "manage.py", "runserver", "--insecure", "0.0.0.0:8000"]
 
