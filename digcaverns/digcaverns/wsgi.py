@@ -16,4 +16,4 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'digcaverns.settings')
 application = get_wsgi_application()
 
 # Connecting to vercel app
-app= application
+app=application
