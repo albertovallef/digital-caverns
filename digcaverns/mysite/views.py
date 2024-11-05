@@ -55,7 +55,7 @@ def display_resume(request):
     """Returns requested pdf resource"""
     # TODO: Implement a system where I grab the most 
     # recent resume automatically; relates to issue#4 
-    filename = "Resume-31-08-2024.pdf"
+    filename = "Resume-5-11-2024.pdf"
     file_path = os.path.join(settings.MEDIA_ROOT, filename)
     print(file_path)
     
